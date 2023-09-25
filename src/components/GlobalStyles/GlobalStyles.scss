@@ -2,7 +2,16 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,200;0,300;0,600;0,700;1,200;1,300;1,600&display=swap');
 
 :root {
-    --primary-color: #FE2C55;
+    --primary-color: #fe2c55;
+    --black-color: #161823;
+
+    // Default layout
+    --height-header: 60px;
+    --width-innerHeader-container: 1488px;
+}
+
+.hide {
+    display: none;
 }
 
 * {
@@ -20,4 +29,9 @@ body {
     font-size: 1.6rem;
     text-rendering: optimizeSpeed;
     line-height: 1.5;
+}
+
+a {
+    color: var(--black-color);
+    text-decoration: none;    
 }
