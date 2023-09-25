@@ -2,13 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,200;0,300;0,600;0,700;1,200;1,300;1,600&display=swap');
 
 :root {
-    --primary-color: #fe2c55;
-    --black-color: #161823;
+    --primary-color: #FE2C55;
+    --black-color: #2b2d32;
+    --white-color: #fff;
 
     // Default layout
     --height-header: 60px;
     --width-innerHeader-container: 1488px;
 }
+
 
 .hide {
     display: none;
