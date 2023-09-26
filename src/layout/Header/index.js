@@ -14,6 +14,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 
+import Button from '../../components/Button';
+
 const cx = classNames.bind(styles);
 
 function Header() {
@@ -74,11 +76,16 @@ function Header() {
 
                 {/* Actions */}
                 <div className={cx('actions')}>
-                    <button className={cx('upLoad')}>
-                        <FontAwesomeIcon icon={faPlus} />
-                        <span>Upload</span>
-                    </button>
-                    <button className={cx('logIn')}>Log in</button>
+                    <Button 
+                        iconName={faPlus}
+                        children={'Upload'}
+                    />
+                    
+                    <Button 
+                        primary
+                        children={'Log In'} 
+                    />
+                    
                     <FontAwesomeIcon
                         className={cx('bar')}
                         icon={faEllipsisVertical}

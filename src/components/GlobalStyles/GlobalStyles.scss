@@ -33,7 +33,12 @@ body {
     line-height: 1.5;
 }
 
-a {
+button {
+    border: none;
+    outline: none;
+}
+
+a[href] {
     color: var(--black-color);
     text-decoration: none;    
 }

@@ -1,0 +1,82 @@
+@mixin unStyleRounded() {
+    border-color: var(--primary-color);
+    box-shadow: none;
+}
+
+.wrapper {
+    font-size: 1.6rem;
+    font-weight: 700;
+    min-width: 100px;
+    padding: 9px 16px;
+    border-radius: 4px;
+    background-color: var(--white-color);
+    border: 1px solid rgba(22, 24, 35, 0.12);
+    cursor: pointer;
+    user-select: none;
+
+    + .wrapper {
+        margin-left: 16px;
+    }
+
+    &:hover {
+        background-color: rgba(22, 24, 35, .03);
+    }
+
+    &.disabled {
+        pointer-events: none;
+        opacity: .5;
+    }
+}
+
+
+// Button styles
+.wrapper.rounded {
+    min-width: 90px;
+    padding: 6px 16px;
+    border-radius: 52px;
+    box-shadow: 0 0 1px rgba(22, 24, 35, 0.12);
+    &:hover {
+        background-color: var(--white-color);
+        border-color: rgba(22, 24, 35, 0.22);
+    }
+}
+
+.wrapper.primary {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    @include unStyleRounded();
+    
+    &:hover {
+        @include unStyleRounded;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)),var(--primary-color);
+    }
+}
+
+.wrapper.outline {
+    color: var(--primary-color);
+    border-color: currentColor;
+    @include unStyleRounded();
+
+    &:hover {
+        @include unStyleRounded;
+        background-color: rgba(254, 44, 85, 0.08);
+    }
+}
+
+// Button zise
+.wrapper.small {
+    min-width: 96px;
+}
+
+.wrapper.large {
+    min-width: 208px;
+    padding: 14px 16px;
+}
+
+
+
+
+// Icon
+.icon {
+    margin-right: 12px;
+}
