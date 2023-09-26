@@ -1,0 +1,51 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    padding: 9px 16px;
+    cursor: pointer;
+    &:hover {
+        background-color: #f5f2f2;
+    }
+
+    &:hover .option {
+        display: inline;
+    }
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.info {
+    flex-grow: 1;
+    margin-left: 12px;
+}
+
+.name {
+    font-size: 1.6rem;
+    font-weight: 600;
+}  
+
+.check {
+    margin-left: 6px;
+    color: rgb(32, 213, 236);
+}
+
+.auther {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: rgba(22, 24, 35, .8);
+}
+
+.icon-option {
+    color: #555;
+    padding: 8px 16px 0 8px;
+}
+
+.option-box {
+    min-width: 250px;
+    border-radius:  15px;
+}
