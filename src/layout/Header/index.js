@@ -1,14 +1,17 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import 'tippy.js/dist/tippy.css';
 import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCircleXmark,
     faSpinner,
     faSearch,
     faPlus,
     faEllipsisVertical,
+    faEarthAsia,
 } from '@fortawesome/free-solid-svg-icons';
+import { faKeyboard, faMoon, faLightbulb, faCircleQuestion } from '@fortawesome/free-regular-svg-icons';
+
 import { useEffect, useState } from 'react';
 
 import styles from './Header.module.scss';
@@ -16,9 +19,36 @@ import images from '../../assets/images';
 import Button from '../../components/Button';
 import Popper from '../../components/Popper';
 import Accounts from '../../components/AccountsSearchResult';
-
+import Menu from '../../components/Menu';
 
 const cx = classNames.bind(styles);
+
+// 
+const menus_header = [
+    {
+        icon: <FontAwesomeIcon icon={faLightbulb}/>,
+        title: 'LIVE creator Hub'
+    },
+    {
+        icon: <FontAwesomeIcon icon={faEarthAsia}/>,
+        title: 'English'
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCircleQuestion}/>,
+        title: 'Feedback and Help'
+    },
+    {
+        icon: <FontAwesomeIcon icon={faKeyboard}/>,
+        title: 'Keysboard shortcuts'
+    },
+    {
+        icon: <FontAwesomeIcon icon={faMoon}/>,
+        title: 'Dark mode',
+        btnAfter: <input type='checkbox' />
+    },
+
+]
+// 
 
 function Header() {
     //
@@ -26,25 +56,25 @@ function Header() {
 
     //
     useEffect(() => {
-        // setTimeout(() => {
-        //     setSearchResults([
-        //         {
-        //             img: 'https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/053be10c07ed24aeca9676625ecaada8.jpeg?x-expires=1695909600&x-signature=2C2BvkTAfW1Ji82s4HWnpbvQ2vc%3D',
-        //             userName: 'kh0172',
-        //             auther: 'Khang Huy'
-        //         },
-        //         {
-        //             img: 'https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/053be10c07ed24aeca9676625ecaada8.jpeg?x-expires=1695909600&x-signature=2C2BvkTAfW1Ji82s4HWnpbvQ2vc%3D',
-        //             userName: 'kh0172',
-        //             auther: 'Khang Huy'
-        //         },
-        //         {
-        //             img: 'https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/053be10c07ed24aeca9676625ecaada8.jpeg?x-expires=1695909600&x-signature=2C2BvkTAfW1Ji82s4HWnpbvQ2vc%3D',
-        //             userName: 'kh0172',
-        //             auther: 'Khang Huy'
-        //         },
-        //     ] ); 
-        // }, 5000)
+        setTimeout(() => {
+            setSearchResults([
+                {
+                    img: 'https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/475621c1ace4a5b8cd3abade2d544c50.jpeg?x-expires=1695996000&x-signature=xOsv5k9KphoCTebDDIck8k3YmL4%3D',
+                    userName: 'ttnl@gmail.com',
+                    auther: 'Nha Linh'
+                },
+                {
+                    img: 'https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/475621c1ace4a5b8cd3abade2d544c50.jpeg?x-expires=1695996000&x-signature=xOsv5k9KphoCTebDDIck8k3YmL4%3D',
+                    userName: 'ttnl@gmail.com',
+                    auther: 'Nha Linh'
+                },
+                {
+                    img: 'https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/475621c1ace4a5b8cd3abade2d544c50.jpeg?x-expires=1695996000&x-signature=xOsv5k9KphoCTebDDIck8k3YmL4%3D',
+                    userName: 'ttnl@gmail.com',
+                    auther: 'Nha Linh'
+                },
+            ] ); 
+        }, 5000)
     }, [])
     
     return (
@@ -107,11 +137,28 @@ function Header() {
                         children={'Log In'} 
                     />
                     
-                    <button className={cx('more-btn')}>
-                        <FontAwesomeIcon
-                            icon={faEllipsisVertical}
-                        />
-                    </button>
+                    <Tippy
+                        visible
+                        interactive
+                        placement="bottom-end"
+                        render={(attrs) => (
+                            <div
+                                className={cx('more-btn_box')}
+                                tabIndex="-1"
+                                {...attrs}
+                            >
+                                <Popper>
+                                    <Menu data={menus_header} />
+                                </Popper>
+                            </div>
+                        )}
+                    >
+                        <button className={cx('more-btn')}>
+                            <FontAwesomeIcon
+                                icon={faEllipsisVertical}
+                            />
+                        </button>
+                    </Tippy>
                 </div>
             </div>
         </header>

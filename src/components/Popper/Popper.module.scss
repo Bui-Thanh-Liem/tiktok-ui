@@ -1,8 +1,10 @@
 .wrapper {
+    z-index: 5;
+    background-color: var(--white-color);
     width: 100%;
     border-radius: 8px;
     padding: 8px 0;
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 12px;
+    box-shadow: rgba(0, 0, 0, 0.14) 0px 2px 12px;
     max-height: min((100vh - 96px) - 60px, 760px);
     overflow: hidden auto;
     &::-webkit-scrollbar {

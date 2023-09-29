@@ -47,5 +47,37 @@
 
 .option-box {
     min-width: 250px;
-    border-radius:  15px;
+
+    &::before {
+        position: absolute;
+        top: -10px;
+        right: 8px;
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        border-left: 16px solid transparent;
+        border-right: 16px solid transparent;
+        border-bottom: 16px solid var(--white-color);
+    }
+
+    p {
+        font-size: 1.6rem;
+        font-weight: 600;
+        padding: 8px 16px;
+        color: var(--black-color);
+    
+        &:hover {
+            color: var(--primary-color);
+        }   
+    
+        .icon {
+            margin-right: 16px;
+        }
+    }
+
+    hr {
+        margin: 0 16px;
+    }
+    
 }
