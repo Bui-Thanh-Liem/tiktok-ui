@@ -1,0 +1,19 @@
+.wrapper {
+    position: relative;
+    height: 50px;
+    font-size: 1.8rem;
+    margin-top: -8px;
+}
+
+.btn-back {
+    height: 100%;
+    width: 50px;
+    background-color: transparent;
+}
+
+.title-header {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

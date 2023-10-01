@@ -10,7 +10,12 @@ import {
     faEllipsisVertical,
     faEarthAsia,
 } from '@fortawesome/free-solid-svg-icons';
-import { faKeyboard, faMoon, faLightbulb, faCircleQuestion } from '@fortawesome/free-regular-svg-icons';
+import {
+    faKeyboard,
+    faMoon,
+    faLightbulb,
+    faCircleQuestion,
+} from '@fortawesome/free-regular-svg-icons';
 
 import { useEffect, useState } from 'react';
 
@@ -23,32 +28,45 @@ import Menu from '../../components/Menu';
 
 const cx = classNames.bind(styles);
 
-// 
+//
 const menus_header = [
     {
-        icon: <FontAwesomeIcon icon={faLightbulb}/>,
-        title: 'LIVE creator Hub'
+        icon: <FontAwesomeIcon icon={faLightbulb} />,
+        title: 'LIVE creator Hub',
     },
     {
-        icon: <FontAwesomeIcon icon={faEarthAsia}/>,
-        title: 'English'
+        icon: <FontAwesomeIcon icon={faEarthAsia} />,
+        title: 'English',
+        children: {
+            title: 'Languages',
+            data: [
+                {
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+            ]
+        }
     },
     {
-        icon: <FontAwesomeIcon icon={faCircleQuestion}/>,
-        title: 'Feedback and Help'
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        title: 'Feedback and Help',
+        to: '/feedback'
     },
     {
-        icon: <FontAwesomeIcon icon={faKeyboard}/>,
-        title: 'Keysboard shortcuts'
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        title: 'Keysboard shortcuts',
     },
     {
-        icon: <FontAwesomeIcon icon={faMoon}/>,
+        icon: <FontAwesomeIcon icon={faMoon} />,
         title: 'Dark mode',
-        btnAfter: <input type='checkbox' />
+        btnAfter: <input type="checkbox" />,
     },
-
-]
-// 
+];
+//
 
 function Header() {
     //
@@ -61,22 +79,28 @@ function Header() {
                 {
                     img: 'https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/475621c1ace4a5b8cd3abade2d544c50.jpeg?x-expires=1695996000&x-signature=xOsv5k9KphoCTebDDIck8k3YmL4%3D',
                     userName: 'ttnl@gmail.com',
-                    auther: 'Nha Linh'
+                    auther: 'Nha Linh',
                 },
                 {
                     img: 'https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/475621c1ace4a5b8cd3abade2d544c50.jpeg?x-expires=1695996000&x-signature=xOsv5k9KphoCTebDDIck8k3YmL4%3D',
                     userName: 'ttnl@gmail.com',
-                    auther: 'Nha Linh'
+                    auther: 'Nha Linh',
                 },
                 {
                     img: 'https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/475621c1ace4a5b8cd3abade2d544c50.jpeg?x-expires=1695996000&x-signature=xOsv5k9KphoCTebDDIck8k3YmL4%3D',
                     userName: 'ttnl@gmail.com',
-                    auther: 'Nha Linh'
+                    auther: 'Nha Linh',
                 },
-            ] ); 
-        }, 5000)
-    }, [])
-    
+            ]);
+        }, 5000);
+    }, []);
+
+
+    //
+    const handleMenuChange = (menuItem) => {
+        console.log(menuItem);
+    }
+
     return (
         <header className={cx(styles.wrapper)}>
             <div className={cx('innerHeader')}>
@@ -86,7 +110,6 @@ function Header() {
                         <img src={images.logo} alt="Tiktok"></img>
                     </a>
                 </div>
-                
 
                 {/* Search */}
                 <span>
@@ -106,7 +129,10 @@ function Header() {
                         )}
                     >
                         <div className={cx('search')}>
-                            <input placeholder="Search find account" spellCheck={false} />
+                            <input
+                                placeholder="Search find account"
+                                spellCheck={false}
+                            />
                             <button className={cx('clear')}>
                                 <FontAwesomeIcon
                                     className={cx('clear-icon')}
@@ -127,38 +153,22 @@ function Header() {
 
                 {/* Actions */}
                 <div className={cx('actions')}>
-                    <Button 
-                        iconName={faPlus}
-                        children={'Upload'}
-                    />
-                    
-                    <Button 
-                        primary
-                        children={'Log In'} 
-                    />
-                    
-                    <Tippy
-                        visible
-                        interactive
-                        placement="bottom-end"
-                        render={(attrs) => (
-                            <div
-                                className={cx('more-btn_box')}
-                                tabIndex="-1"
-                                {...attrs}
-                            >
-                                <Popper>
-                                    <Menu data={menus_header} />
-                                </Popper>
-                            </div>
-                        )}
-                    >
+
+                    {/*  */}
+                    <Button iconName={faPlus} children={'Upload'} />
+
+                    {/*  */}
+                    <Button primary children={'Log In'} />
+
+                    {/*  */}
+                    <Menu data={menus_header} onChange={handleMenuChange}>
                         <button className={cx('more-btn')}>
                             <FontAwesomeIcon
                                 icon={faEllipsisVertical}
                             />
                         </button>
-                    </Tippy>
+                    </Menu>
+
                 </div>
             </div>
         </header>

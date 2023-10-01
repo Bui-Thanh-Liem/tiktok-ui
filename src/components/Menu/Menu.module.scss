@@ -1,23 +1,23 @@
-.wrapper {
+.content {
+    width: 244px;
+    transform: translateY(-12px);
+    position: relative;
 
-}
-
-.item {
-    font-size: 1.8rem;
-    font-weight: 500;
-    padding: 9px 16px;
-
-    &:hover {
-        background-color: #f5f2f2;
-    }
-
-    .icon {
-        display: inline-block;
-        min-width: 20px;
-        margin-right: 12px;
-    }
-
-    .title {
-
+    &::before {
+        position: absolute;
+        top: -8px;
+        right: 2px;
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        border-left: 16px solid transparent;
+        border-right: 16px solid transparent;
+        border-bottom: 16px solid var(--white-color);
     }
 }
+
+
+
+
+
