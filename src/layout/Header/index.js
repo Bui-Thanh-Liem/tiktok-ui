@@ -1,4 +1,6 @@
 import 'tippy.js/dist/tippy.css';
+import TippyThuong from '@tippyjs/react/';
+
 import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,15 +11,24 @@ import {
     faPlus,
     faEllipsisVertical,
     faEarthAsia,
+    faCoins,
+    faGear,
+    faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
+
 import {
     faKeyboard,
     faMoon,
     faLightbulb,
     faCircleQuestion,
+    faPaperPlane,
+    faMessage,
+    faUser,
+    faBookmark,
 } from '@fortawesome/free-regular-svg-icons';
 
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import styles from './Header.module.scss';
 import images from '../../assets/images';
@@ -25,6 +36,9 @@ import Button from '../../components/Button';
 import Popper from '../../components/Popper';
 import Accounts from '../../components/AccountsSearchResult';
 import Menu from '../../components/Menu';
+import Image from '../../components/Image';
+import imagesAvatar from '../../assets/images';
+
 
 const cx = classNames.bind(styles);
 
@@ -66,11 +80,48 @@ const menus_header = [
         btnAfter: <input type="checkbox" />,
     },
 ];
+
+//
+const menus_header_logged = [
+    {
+        icon: <FontAwesomeIcon icon={faUser} />,
+        title: 'View profile',
+        to: '/ttnl@gmail.com'
+    },
+    {
+        icon: <FontAwesomeIcon icon={faBookmark} />,
+        title: 'Favorites',
+        to: '/ttnl@gmail.com'   // profile favorites
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCoins} />,
+        title: 'Get Cois',
+        to: '/cois'
+    },
+    {
+        icon: <FontAwesomeIcon icon={faGear} />,
+        title: 'Settings',
+        to: '/settings'
+    },
+    
+    ...menus_header,
+    {
+        icon: <FontAwesomeIcon icon={faSignOut} />,
+        title: 'Log out',
+        to: '/logout',
+        separate: true,
+    },
+]
+
+
 //
 
 function Header() {
     //
     const [searchResults, setSearchResults] = useState([]);
+
+    //
+    const currentUser = true;
 
     //
     useEffect(() => {
@@ -154,19 +205,64 @@ function Header() {
                 {/* Actions */}
                 <div className={cx('actions')}>
 
-                    {/*  */}
-                    <Button iconName={faPlus} children={'Upload'} />
+                    {currentUser ? (
+                        <>
+                            {/* btn-upload */}
+                            <Button iconName={faPlus} children={'Upload'} />
+
+                            {/*  */}
+                            <TippyThuong 
+                                content={'Messages'}
+                            >
+                                <Link 
+                                    className={cx('action-btn', 'plane')}
+                                    to={"/messages"}
+                                >
+                                    <FontAwesomeIcon icon={faPaperPlane}/>
+                                </Link>
+                            </TippyThuong>
+                            
+                            {/*  */}
+                            <TippyThuong content={'Inbox'}>
+                                <button 
+                                    className={cx('action-btn')}
+                                >
+                                    <FontAwesomeIcon icon={faMessage}/>
+                                </button>
+                            </TippyThuong>
+                            
+                        </>
+                    ) : (
+                        <>
+                            {/* btn-upload */}
+                            <Button iconName={faPlus} children={'Upload'} />
+
+                            {/*  */}
+                            <Button primary children={'Log In'} />
+
+                        </>
+                    )}
 
                     {/*  */}
-                    <Button primary children={'Log In'} />
-
-                    {/*  */}
-                    <Menu data={menus_header} onChange={handleMenuChange}>
-                        <button className={cx('more-btn')}>
-                            <FontAwesomeIcon
-                                icon={faEllipsisVertical}
+                    <Menu 
+                        data={ currentUser ? menus_header_logged : menus_header} 
+                        onChange={handleMenuChange}
+                    >
+                        {currentUser ? (
+                            <Image 
+                                className={cx('avatar')} 
+                                // src=''
+                                src='https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/475621c1ace4a5b8cd3abade2d544c50.jpeg?x-expires=1695996000&x-signature=xOsv5k9KphoCTebDDIck8k3YmL4%3D' 
+                                alt='avrtar'
+                                // fallBack={imagesAvatar.avatarDefault}
                             />
-                        </button>
+                        ) : (
+                            <button className={cx('more-btn')}>
+                                <FontAwesomeIcon
+                                    icon={faEllipsisVertical}
+                                />
+                            </button>
+                        )}
                     </Menu>
 
                 </div>

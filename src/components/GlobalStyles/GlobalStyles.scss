@@ -1,5 +1,5 @@
 @import 'normalize.css';
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,200;0,300;0,600;0,700;1,200;1,300;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,600&display=swap');
 
 :root {
     --primary-color: #FE2C55;
@@ -12,6 +12,12 @@
     --width-search: 500px;
     --width-innerHeader-container: 1488px;
 }
+
+// Fonts 
+    // @font-face {
+    //     font-family: TikTokFont;
+    //     src: url('/src/assets/fonts/TikTokFont-Bold.woff2');
+    // } phải dùng font-family
 
 
 .hide {
@@ -46,4 +52,16 @@ a[href] {
 }
 li {
     list-style-type: none;
+}
+
+
+// Custom Tippy box
+.tippy-box {
+    background-color: #666;
+    border-radius: 9px;
+    font-size: 1.6rem;
+}
+
+.tippy-arrow {
+    color: #666;
 }

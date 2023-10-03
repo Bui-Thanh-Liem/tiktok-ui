@@ -9,14 +9,16 @@
         margin-left: 0;
     }
 
+    &.separate {
+        border-top: 1px solid rgba(22, 24, 35, .12);
+    }
+
     .icon {
         display: inline-block;
         width: 28px;
     }
 
 }
-
-
 
 
 

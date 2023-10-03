@@ -116,6 +116,30 @@
     align-items: center;
 }
 
+// logged
+.action-btn {
+    height: 32px;
+    width: 32px;
+    font-size: 2.2rem;
+    background-color: transparent;
+    margin-left: 24px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.action-btn.plane {
+    transform: translateY(-6px);
+}
+
+
+.avatar {
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    margin-left: 30px;
+    border-radius: 50%;
+}
+
 
 .more-btn {
     cursor: pointer;
