@@ -1,0 +1,42 @@
+----------Gọi API thông thường bằng Fetch
+fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(deBounced_searchValue)}&type=${'less'}`)
+    .then(res => {return res.json()})
+
+
+
+
+----------Gọi API thông qua thư viện Axios (dùng phương thức XMH httprequired), có sẵn encodeURLComponent
+request
+    .get('users/search', {
+        params: {
+            q: deBounced_searchValue,
+            type: 'less'
+        }
+    })
+    .then(res => {
+        setSearchResults(res.data.data);
+        setShowLoading(false);
+    })
+    .catch(err => {
+        setShowLoading(false);
+    });
+
+
+----------Chuyển đổi promise -> async....await
+const handleCallAPI = async () => {
+        try {
+            const res = await request.get('users/search', {
+                params: {
+                    q: deBounced_searchValue,
+                    type: 'less'
+                }
+            })
+            
+            setSearchResults(res.data.data);
+            setShowLoading(false);
+
+        } catch (error) {
+            setShowLoading(false);
+        }
+    };
+    handleCallAPI();

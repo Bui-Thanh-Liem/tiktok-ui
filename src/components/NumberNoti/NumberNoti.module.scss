@@ -1,0 +1,18 @@
+.wrapper {
+    position: relative;
+}
+
+.boxNumber {
+    position: absolute;
+    top: -12px;
+    right: -10px;
+    z-index: -1;
+
+    display: block;
+    border-radius: 12px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 0px 6px;
+    font-size: 1.2rem;
+}
+

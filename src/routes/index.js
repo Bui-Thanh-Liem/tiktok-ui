@@ -1,7 +1,9 @@
 import Home from "../pages/Home"
 import Following from "../pages/Following"
 import Upload from "../pages/Upload"
+import Profile from "../pages/Profile"
 
+//
 export const pulicComponents = [
     {
         path: '/',
@@ -16,8 +18,14 @@ export const pulicComponents = [
         element: Upload,
         layout: null
     },
+    {
+        path: '/:nickname',
+        element: Profile
+    },
 ]
 
+
+//
 export const privateComponents = [
     {
         

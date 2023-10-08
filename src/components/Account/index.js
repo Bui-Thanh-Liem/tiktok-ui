@@ -2,27 +2,35 @@ import 'tippy.js/dist/tippy.css';
 import Tippy from '@tippyjs/react/headless';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
-import styels from './Account.module.scss';
 import { faCheckCircle, faEllipsis, faFlag, faHeartBroken } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+
 import Popper from '../Popper';
+import Image from '../../components/Image';
+import styels from './Account.module.scss';
 
 //
 const cx = classNames.bind(styels);
 
 //
-function Account({ img, userName, auther }) {
+function Account({data}) {
+    
     return (
-        <div className={cx('wrapper')}>
-            <img className={cx('avatar')} src={img} alt="Avatar" />
+        <Link to={`/@${data.nickname}`} className={cx('wrapper')}>
+            <Image 
+                className={cx('avatar')} 
+                src={data.avatar} 
+                alt="Avatar" 
+            />
             <div className={cx('info')}>
                 <div className={cx('name')}>
-                    {userName}
-                    <FontAwesomeIcon
+                    {data.full_name}
+                    {data.tick && <FontAwesomeIcon
                         className={cx('check')}
                         icon={faCheckCircle}
-                    />
+                    />}
                 </div>
-                <div className={cx('auther')}>{auther}</div>
+                <div className={cx('auther')}>{data.nickname}</div>
             </div>
             <div className={cx('hide', 'option')}>
                 <Tippy
@@ -60,7 +68,7 @@ function Account({ img, userName, auther }) {
                     </span>
                 </Tippy>
             </div>
-        </div>
+        </Link>
     );
 }
 

@@ -1,13 +1,9 @@
 import 'tippy.js/dist/tippy.css';
 import TippyThuong from '@tippyjs/react/';
 
-import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-    faCircleXmark,
-    faSpinner,
-    faSearch,
     faPlus,
     faEllipsisVertical,
     faEarthAsia,
@@ -27,17 +23,15 @@ import {
     faBookmark,
 } from '@fortawesome/free-regular-svg-icons';
 
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './Header.module.scss';
 import images from '../../assets/images';
 import Button from '../../components/Button';
-import Popper from '../../components/Popper';
-import Accounts from '../../components/AccountsSearchResult';
 import Menu from '../../components/Menu';
 import Image from '../../components/Image';
-import imagesAvatar from '../../assets/images';
+import NumberNoti from '../../components/NumberNoti';
+import Search from '../Search';
 
 
 const cx = classNames.bind(styles);
@@ -117,35 +111,9 @@ const menus_header_logged = [
 //
 
 function Header() {
-    //
-    const [searchResults, setSearchResults] = useState([]);
 
     //
     const currentUser = true;
-
-    //
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResults([
-                {
-                    img: 'https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/475621c1ace4a5b8cd3abade2d544c50.jpeg?x-expires=1695996000&x-signature=xOsv5k9KphoCTebDDIck8k3YmL4%3D',
-                    userName: 'ttnl@gmail.com',
-                    auther: 'Nha Linh',
-                },
-                {
-                    img: 'https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/475621c1ace4a5b8cd3abade2d544c50.jpeg?x-expires=1695996000&x-signature=xOsv5k9KphoCTebDDIck8k3YmL4%3D',
-                    userName: 'ttnl@gmail.com',
-                    auther: 'Nha Linh',
-                },
-                {
-                    img: 'https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/475621c1ace4a5b8cd3abade2d544c50.jpeg?x-expires=1695996000&x-signature=xOsv5k9KphoCTebDDIck8k3YmL4%3D',
-                    userName: 'ttnl@gmail.com',
-                    auther: 'Nha Linh',
-                },
-            ]);
-        }, 5000);
-    }, []);
-
 
     //
     const handleMenuChange = (menuItem) => {
@@ -164,42 +132,7 @@ function Header() {
 
                 {/* Search */}
                 <span>
-                    <Tippy
-                        interactive
-                        visible={searchResults.length > 0 ? true : false}
-                        render={(attrs) => (
-                            <div
-                                className={cx('search-result')}
-                                tabIndex="-1"
-                                {...attrs}
-                            >
-                                <Popper>
-                                    <Accounts searchResults={searchResults} />
-                                </Popper>
-                            </div>
-                        )}
-                    >
-                        <div className={cx('search')}>
-                            <input
-                                placeholder="Search find account"
-                                spellCheck={false}
-                            />
-                            <button className={cx('clear')}>
-                                <FontAwesomeIcon
-                                    className={cx('clear-icon')}
-                                    icon={faCircleXmark}
-                                />
-                                <FontAwesomeIcon
-                                    className={cx('loading-icon', 'hide')}
-                                    icon={faSpinner}
-                                    spin
-                                />
-                            </button>
-                            <button className={cx('search-btn')}>
-                                <FontAwesomeIcon icon={faSearch} />
-                            </button>
-                        </div>
-                    </Tippy>
+                    <Search />
                 </span>
 
                 {/* Actions */}
@@ -223,13 +156,17 @@ function Header() {
                             </TippyThuong>
                             
                             {/*  */}
-                            <TippyThuong content={'Inbox'}>
-                                <button 
-                                    className={cx('action-btn')}
-                                >
-                                    <FontAwesomeIcon icon={faMessage}/>
-                                </button>
-                            </TippyThuong>
+                            <NumberNoti
+                                number={99}
+                            >
+                                <TippyThuong content={'Inbox'}>
+                                        <button 
+                                            className={cx('action-btn')}
+                                        >
+                                            <FontAwesomeIcon icon={faMessage}/>
+                                        </button>
+                                </TippyThuong>
+                            </NumberNoti>
                             
                         </>
                     ) : (
