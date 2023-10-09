@@ -51,6 +51,7 @@ function Menu({ children, data = [], onChange = defaultFunc }) {
         <div className={cx('wrapper')}>
             <Tippy
                 // visible
+                hideOnClick={false}
                 onHide={handleCloseMenu}
                 delay={[0, 500]}
                 interactive
@@ -61,9 +62,11 @@ function Menu({ children, data = [], onChange = defaultFunc }) {
                         tabIndex="-1" 
                         {...attrs}
                     >
-                            <Popper>
+                            <Popper className={cx('popperMenu')}>
                                 {history.length > 1 && <HeaderMenu title={'Language'} onBack={() => {setHistory(prev => history.slice(0, history.length-1))}} />}
-                                {menuItems}
+                                <div className={cx('listMenu')}>
+                                    {menuItems}
+                                </div>
                             </Popper>
                     </div>
                 )}

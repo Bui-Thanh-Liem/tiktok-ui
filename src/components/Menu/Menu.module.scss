@@ -6,7 +6,7 @@
     &::before {
         position: absolute;
         top: -8px;
-        right: 2px;
+        right: 6px;
         content: '';
         display: block;
         width: 0;
@@ -14,6 +14,16 @@
         border-left: 16px solid transparent;
         border-right: 16px solid transparent;
         border-bottom: 16px solid var(--white-color);
+    }
+
+    .popperMenu {
+        overflow: unset;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .listMenu {
+        overflow-y: auto;
     }
 }
 

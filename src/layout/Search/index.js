@@ -73,6 +73,14 @@ function Search() {
     const handleHideResults = (e) => {
         setShowResults(false);
     };
+
+    //
+    const handleValueSearch = (e) => {
+        var Searchvalue = e.target.value
+        if(!Searchvalue.startsWith(' ')) {
+            setSearchValue(Searchvalue);
+        }
+    }
     
     
     return (
@@ -98,7 +106,7 @@ function Search() {
                     value={searchValue}
                     spellCheck={false} 
                     placeholder="Search find account" 
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={handleValueSearch}
                     onFocus={() => setShowResults(true)}
                 />
                 <button className={cx('clear')}>

@@ -2,24 +2,25 @@ import Home from "../pages/Home"
 import Following from "../pages/Following"
 import Upload from "../pages/Upload"
 import Profile from "../pages/Profile"
+import { urlPages } from "../config/routes"
 
 //
 export const pulicComponents = [
     {
-        path: '/',
+        path: urlPages.home,
         element: Home
     },
     {
-        path: '/following',
+        path: urlPages.following,
         element: Following
     },
     {
-        path: '/upload',
+        path: urlPages.upload,
         element: Upload,
         layout: null
     },
     {
-        path: '/:nickname',
+        path: urlPages.profile,
         element: Profile
     },
 ]

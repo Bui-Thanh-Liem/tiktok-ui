@@ -32,7 +32,7 @@ import Menu from '../../components/Menu';
 import Image from '../../components/Image';
 import NumberNoti from '../../components/NumberNoti';
 import Search from '../Search';
-
+import {urlPages} from '../../config/routes';
 
 const cx = classNames.bind(styles);
 
@@ -56,13 +56,13 @@ const menus_header = [
                     code: 'vi',
                     title: 'Tiếng Việt',
                 },
-            ]
-        }
+            ],
+        },
     },
     {
         icon: <FontAwesomeIcon icon={faCircleQuestion} />,
         title: 'Feedback and Help',
-        to: '/feedback'
+        to: '/feedback',
     },
     {
         icon: <FontAwesomeIcon icon={faKeyboard} />,
@@ -80,24 +80,24 @@ const menus_header_logged = [
     {
         icon: <FontAwesomeIcon icon={faUser} />,
         title: 'View profile',
-        to: '/ttnl@gmail.com'
+        to: '/ttnl@gmail.com',
     },
     {
         icon: <FontAwesomeIcon icon={faBookmark} />,
         title: 'Favorites',
-        to: '/ttnl@gmail.com'   // profile favorites
+        to: '/ttnl@gmail.com', // profile favorites
     },
     {
         icon: <FontAwesomeIcon icon={faCoins} />,
         title: 'Get Cois',
-        to: '/cois'
+        to: '/cois',
     },
     {
         icon: <FontAwesomeIcon icon={faGear} />,
         title: 'Settings',
-        to: '/settings'
+        to: '/settings',
     },
-    
+
     ...menus_header,
     {
         icon: <FontAwesomeIcon icon={faSignOut} />,
@@ -105,29 +105,27 @@ const menus_header_logged = [
         to: '/logout',
         separate: true,
     },
-]
-
+];
 
 //
 
 function Header() {
-
     //
     const currentUser = true;
 
     //
     const handleMenuChange = (menuItem) => {
         console.log(menuItem);
-    }
+    };
 
     return (
         <header className={cx(styles.wrapper)}>
             <div className={cx('innerHeader')}>
                 {/* Logo */}
                 <div className={cx('logo')}>
-                    <a href="/">
+                    <Link to={urlPages.home}>
                         <img src={images.logo} alt="Tiktok"></img>
-                    </a>
+                    </Link>
                 </div>
 
                 {/* Search */}
@@ -137,37 +135,31 @@ function Header() {
 
                 {/* Actions */}
                 <div className={cx('actions')}>
-
                     {currentUser ? (
                         <>
                             {/* btn-upload */}
                             <Button iconName={faPlus} children={'Upload'} />
 
                             {/*  */}
-                            <TippyThuong 
-                                content={'Messages'}
-                            >
-                                <Link 
-                                    className={cx('action-btn', 'plane')}
-                                    to={"/messages"}
-                                >
-                                    <FontAwesomeIcon icon={faPaperPlane}/>
-                                </Link>
-                            </TippyThuong>
-                            
-                            {/*  */}
-                            <NumberNoti
-                                number={99}
-                            >
-                                <TippyThuong content={'Inbox'}>
-                                        <button 
-                                            className={cx('action-btn')}
-                                        >
-                                            <FontAwesomeIcon icon={faMessage}/>
-                                        </button>
+                            <NumberNoti number={5}>
+                                <TippyThuong content={'Messages'}>
+                                    <Link
+                                        className={cx('action-btn', 'plane')}
+                                        to={'/messages'}
+                                    >
+                                        <FontAwesomeIcon icon={faPaperPlane} />
+                                    </Link>
                                 </TippyThuong>
                             </NumberNoti>
-                            
+
+                            {/*  */}
+                            <NumberNoti number={99}>
+                                <TippyThuong content={'Inbox'}>
+                                    <button className={cx('action-btn')}>
+                                        <FontAwesomeIcon icon={faMessage} />
+                                    </button>
+                                </TippyThuong>
+                            </NumberNoti>
                         </>
                     ) : (
                         <>
@@ -176,32 +168,28 @@ function Header() {
 
                             {/*  */}
                             <Button primary children={'Log In'} />
-
                         </>
                     )}
 
                     {/*  */}
-                    <Menu 
-                        data={ currentUser ? menus_header_logged : menus_header} 
+                    <Menu
+                        data={currentUser ? menus_header_logged : menus_header}
                         onChange={handleMenuChange}
                     >
                         {currentUser ? (
-                            <Image 
-                                className={cx('avatar')} 
+                            <Image
+                                className={cx('avatar')}
                                 // src=''
-                                src='https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/475621c1ace4a5b8cd3abade2d544c50.jpeg?x-expires=1695996000&x-signature=xOsv5k9KphoCTebDDIck8k3YmL4%3D' 
-                                alt='avrtar'
+                                src="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/475621c1ace4a5b8cd3abade2d544c50.jpeg?x-expires=1695996000&x-signature=xOsv5k9KphoCTebDDIck8k3YmL4%3D"
+                                alt="avrtar"
                                 // fallBack={imagesAvatar.avatarDefault}
                             />
                         ) : (
                             <button className={cx('more-btn')}>
-                                <FontAwesomeIcon
-                                    icon={faEllipsisVertical}
-                                />
+                                <FontAwesomeIcon icon={faEllipsisVertical} />
                             </button>
                         )}
                     </Menu>
-
                 </div>
             </div>
         </header>
