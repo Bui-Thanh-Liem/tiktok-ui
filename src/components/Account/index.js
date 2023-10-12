@@ -1,16 +1,20 @@
+//
 import 'tippy.js/dist/tippy.css';
 import Tippy from '@tippyjs/react/headless';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
 import { faCheckCircle, faEllipsis, faFlag, faHeartBroken } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
+//
 import Popper from '../Popper';
 import Image from '../../components/Image';
 import styels from './Account.module.scss';
 
 //
 const cx = classNames.bind(styels);
+
 
 //
 function Account({data}) {
@@ -71,6 +75,11 @@ function Account({data}) {
         </Link>
     );
 }
+
+Account.propTypes = {
+    data: PropTypes.object.isRequired
+}
+
 
 //
 export default Account;

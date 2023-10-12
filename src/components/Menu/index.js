@@ -1,4 +1,6 @@
 //
+import PropTypes from 'prop-types';
+import { useState } from 'react';
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react/headless';
 
@@ -7,7 +9,6 @@ import styles from './Menu.module.scss';
 import MenuItem from './MenuItem';
 import Popper from '../Popper';
 import HeaderMenu from './HeaderMenu';
-import { useState } from 'react';
 
 //
 const cx = classNames.bind(styles);
@@ -44,8 +45,7 @@ function Menu({ children, data = [], onChange = defaultFunc }) {
     //
     const handleCloseMenu = () => {
         setHistory([history[0]]);
-    }
-    
+    }    
     
     return (
         <div className={cx('wrapper')}>
@@ -63,7 +63,7 @@ function Menu({ children, data = [], onChange = defaultFunc }) {
                         {...attrs}
                     >
                             <Popper className={cx('popperMenu')}>
-                                {history.length > 1 && <HeaderMenu title={'Language'} onBack={() => {setHistory(prev => history.slice(0, history.length-1))}} />}
+                                {history.length > 1 && <HeaderMenu title={currentData.title} onBack={() => {setHistory(prev => history.slice(0, history.length-1))}} />}
                                 <div className={cx('listMenu')}>
                                     {menuItems}
                                 </div>
@@ -75,6 +75,12 @@ function Menu({ children, data = [], onChange = defaultFunc }) {
             </Tippy>
         </div>
     );
+}
+
+Menu.propTypes = {
+    children: PropTypes.node.isRequired,
+    data: PropTypes.array,
+    onChange: PropTypes.func,
 }
 
 export default Menu;

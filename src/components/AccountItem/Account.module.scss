@@ -1,0 +1,74 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 4px;
+    transition: background-color 200ms ease-in-out 0s;
+    cursor: pointer;
+    &:hover {
+        background-color: #f5f2f2;
+    }
+
+    &:hover .option {
+        display: inline;
+    }
+}
+
+.wrapper.accountSmall {
+    .avatar {
+        width: 32px;
+        height: 32px;
+    }
+
+    .name {
+        font-weight: 700;
+    }
+}
+
+// 
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+// 
+.info {
+    flex-grow: 1;
+    margin-left: 12px;
+}
+
+.name {
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.2;
+
+    .text {
+        display: inline-block;
+        max-width: 130px;
+        // -webkit-line-clamp: 1;  /* số dòng hiển thị */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}  
+
+.check {
+    margin-left: 6px;
+    margin-bottom: 4px;
+    color: rgb(32, 213, 236);
+}
+
+.auther {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: rgba(22, 24, 35, .8);
+
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+

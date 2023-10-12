@@ -4,16 +4,15 @@ import {
     faSearch,
 } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react/headless';
-import Account from '../../components/Account'
+import Accounts from '../../components/Accounts'
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect, useRef } from 'react';
-import * as SearchServices from '../../apiServices/SearchServices'
+import * as SearchServices from '../../services/SearchServices'
 
-import { useDebounce } from '../../Hooks';
+import { useDebounce } from '../../hooks';
 import styles from './Search.module.scss';
 import Popper from '../../components/Popper';
-
 
 const cx = classNames.bind(styles);
 
@@ -29,7 +28,7 @@ function Search() {
     const searchRef = useRef();
 
     //
-    const deBounced_searchValue = useDebounce(searchValue, 600);
+    const deBounced_searchValue = useDebounce(searchValue, 500);
     
 
     // useEffect 
@@ -91,10 +90,7 @@ function Search() {
                 <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                     <Popper>
                         <h4 className={cx('heading')}>Accounts</h4>
-                        {searchResults.map(data => {
-                            return <Account key={data.id} data={data} />    
-                        })}
-                        
+                        <Accounts data={searchResults} />
                     </Popper>
                 </div>
             )}

@@ -32,7 +32,7 @@ import Menu from '../../components/Menu';
 import Image from '../../components/Image';
 import NumberNoti from '../../components/NumberNoti';
 import Search from '../Search';
-import {urlPages} from '../../config/routes';
+import config from '../../config';
 
 const cx = classNames.bind(styles);
 
@@ -123,7 +123,7 @@ function Header() {
             <div className={cx('innerHeader')}>
                 {/* Logo */}
                 <div className={cx('logo')}>
-                    <Link to={urlPages.home}>
+                    <Link to={config.urlPages.home}>
                         <img src={images.logo} alt="Tiktok"></img>
                     </Link>
                 </div>
@@ -167,7 +167,7 @@ function Header() {
                             <Button iconName={faPlus} children={'Upload'} />
 
                             {/*  */}
-                            <Button primary children={'Log In'} />
+                            <Button primary to={'/login'} children={'Log In'} />
                         </>
                     )}
 

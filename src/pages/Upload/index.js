@@ -1,4 +1,4 @@
-import Header from "../../layout/Header";
+import Header from '../../layouts/Header';
 
 function Upload() {
     return (
@@ -6,7 +6,7 @@ function Upload() {
             <Header />
             <div>Upload page</div>
         </div>
-    )
+    );
 }
 
 export default Upload;
