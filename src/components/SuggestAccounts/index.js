@@ -14,14 +14,15 @@ function SuggestAccounts({label, data = []}) {
     return (
         <div className={cx('wrapper')}>
             <p className={cx('label')}>{label}</p>
-            {data.map((item) => <AccountItem data={item}/>)}
+            {data.map((item, index) => <AccountItem key={index} data={item}/>)}
+            <p className={cx('seeMore-btn')}>See more</p>
         </div>
     )
 }
 
 SuggestAccounts.propTypes = {
     label: PropTypes.string,
-    daat: PropTypes.array.isRequired
+    data: PropTypes.array.isRequired
 }
 
 export default SuggestAccounts;

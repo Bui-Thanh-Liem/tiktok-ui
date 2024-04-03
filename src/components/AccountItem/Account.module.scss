@@ -1,3 +1,10 @@
+@mixin styleAvatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 .wrapper {
     display: flex;
     align-items: center;
@@ -27,10 +34,7 @@
 
 // 
 .avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    object-fit: cover;
+    @include styleAvatar();
 }
 
 
@@ -47,7 +51,7 @@
 
     .text {
         display: inline-block;
-        max-width: 130px;
+        max-width: 140px;
         // -webkit-line-clamp: 1;  /* số dòng hiển thị */
         overflow: hidden;
         text-overflow: ellipsis;
@@ -71,4 +75,59 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+
+
+
+
+
+
+
+// Box Preview
+
+.boxPreview {
+    width: var(--width-sidebar);
+    padding: 0 8px;
+}
+
+.boxPreview_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .boxPreview_avatar {
+        @include styleAvatar();
+        width: 40px;
+        height: 40px;
+    } 
+}
+
+.boxPreview_body {
+    .info {
+        margin: 24px 0;
+
+        .name {
+            .text {
+                max-width: 170px;
+                // -webkit-line-clamp: 1;  /* số dòng hiển thị */
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+    }
+}
+
+.boxPreview_footer {
+    .value ~ .value {
+        margin-left: 12px;
+    }
+
+    .label {
+        font-weight: 400;
+        font-size: 1.4rem;
+        color: #161823bf;
+    }
+}
+
+
 

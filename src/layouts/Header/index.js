@@ -111,7 +111,7 @@ const menus_header_logged = [
 
 function Header() {
     //
-    const currentUser = true;
+    const currentUser = false;
 
     //
     const handleMenuChange = (menuItem) => {

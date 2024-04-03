@@ -39,27 +39,6 @@ const data = [
         avatar: 'https://p16-sign-useast2a.tiktokcdn.com/tos-useast2a-avt-0068-giso/92548ea79f7cd819c7b6324d042bbaaa~c5_100x100.jpeg?x-expires=1697266800&x-signature=gwSWySNPSVcqXF%2BcemUBEBWhnUc%3D',
         full_name: 'full_name',
         tick: false
-    },{
-        nickname: 'nickname3',
-        avatar: 'https://p16-sign-useast2a.tiktokcdn.com/tos-useast2a-avt-0068-giso/92548ea79f7cd819c7b6324d042bbaaa~c5_100x100.jpeg?x-expires=1697266800&x-signature=gwSWySNPSVcqXF%2BcemUBEBWhnUc%3D',
-        full_name: 'full_name',
-        tick: true
-    },
-    {
-        nickname: 'nickname1 dddd fffffffffdddddddddddddd',
-        avatar: 'https://p16-sign-useast2a.tiktokcdn.com/tos-useast2a-avt-0068-giso/92548ea79f7cd819c7b6324d042bbaaa~c5_100x100.jpeg?x-expires=1697266800&x-signature=gwSWySNPSVcqXF%2BcemUBEBWhnUc%3D',
-        full_name: 'Bui Thanh Thanh Liem ',
-        tick: true
-    },{
-        nickname: 'nickname2',
-        avatar: 'https://p16-sign-useast2a.tiktokcdn.com/tos-useast2a-avt-0068-giso/92548ea79f7cd819c7b6324d042bbaaa~c5_100x100.jpeg?x-expires=1697266800&x-signature=gwSWySNPSVcqXF%2BcemUBEBWhnUc%3D',
-        full_name: 'full_name',
-        tick: false
-    },{
-        nickname: 'nickname3',
-        avatar: 'https://p16-sign-useast2a.tiktokcdn.com/tos-useast2a-avt-0068-giso/92548ea79f7cd819c7b6324d042bbaaa~c5_100x100.jpeg?x-expires=1697266800&x-signature=gwSWySNPSVcqXF%2BcemUBEBWhnUc%3D',
-        full_name: 'full_name',
-        tick: true
     }
 ]
 
@@ -72,6 +51,10 @@ function Sidebar() {
                 <MenuItem title='Explore' to={config.urlPages.explore} icon={<CompassIcon/>} iconActive={<CompassIconActive/>}/>
                 <MenuItem title='Live' to={config.urlPages.live} icon={<LiveIcon/>} iconActive={<LiveIconActive/>}/>
             </Menu>
+            <SuggestAccounts 
+                label={'Following accounts'} 
+                data={data}
+            />
             <SuggestAccounts 
                 label={'Following accounts'} 
                 data={data}

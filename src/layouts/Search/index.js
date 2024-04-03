@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect, useRef } from 'react';
 import * as SearchServices from '../../services/SearchServices'
 
-import { useDebounce } from '../../hooks';
+import useDebounce from '../../hooks/useDebounce.js';
 import styles from './Search.module.scss';
 import Popper from '../../components/Popper';
 
